@@ -1,64 +1,32 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Test Achat</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background: #f1f1f1;
-        }
-        .box {
-            width: 300px;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.15);
-        }
-        button {
-            margin-top: 15px;
-            padding: 10px 15px;
-            background: #0d6efd;
-            border: none;
-            border-radius: 5px;
-            color: #fff;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #0a54c8;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Product</title>
+  <style>
+    body { font-family: system-ui, "Segoe UI", Roboto, Arial, sans-serif; display:flex; align-items:center; justify-content:center; min-height:100vh; margin:0; background:#f7f7f8; padding:20px; }
+    .product { background:#fff; border:1px solid #e6e6e6; border-radius:8px; padding:20px; width:320px; box-shadow:0 2px 6px rgba(0,0,0,0.05); text-align:center; }
+    .product img { width:100%; height:auto; border-radius:6px; object-fit:cover; }
+    .product h1 { font-size:1.125rem; margin:12px 0 6px; }
+    .product p { color:#555; font-size:0.95rem; margin:0 0 12px; }
+    .price { font-weight:700; font-size:1.125rem; margin-bottom:16px; }
+    #pay-button { display:block; width:100%; padding:12px; background:#0069ff; color:#fff; border:none; border-radius:6px; font-size:1rem; cursor:pointer; }
+    #pay-button:focus { outline:2px solid #0047b3; outline-offset:2px; }
+  </style>
 </head>
 <body>
-
-<div class="box">
-    <input type="checkbox" id="agree">
-    <label for="agree">Je veux acheter ce produit</label>
-
-    <button onclick="buy()">Acheter test</button>
-</div>
-
-<script>
-    function buy() {
-        const ok = document.getElementById('agree').checked;
-
-        if (!ok) {
-            alert("Coche la case avant d'acheter.");
-            return;
-        }
-
-        // C’est ici que tu colles ton appel API réel
-        console.log("Achat envoyé à l’API...");
-        alert("API déclenchée (test).");
-
-        // Exemple d'appel futur :
-        // fetch("https://api.monnero.com/pay", {
-        //     method: "POST",
-        //     headers: { "Authorization": "Bearer TA_CLE_API" },
-        //     body: JSON.stringify({ product: "test", price: 10 })
-        // });
-    }
+  <main>
+    <div class="product" role="region" aria-label="Product">
+      <img src="placeholder.jpg" alt="Product image" />
+      <h1>Sample Product</h1>
+      <p>Short description of the product.</p>
+      <div class="price">XAF5000</div>
+      <button id="pay-button" type="button" aria-label="Pay for product">Pay</button>
+    </div>
+  </main>
+</body>
+</html>
 </script>
 
 </body>
