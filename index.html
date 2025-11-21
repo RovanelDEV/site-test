@@ -34,6 +34,13 @@
         button:hover {
             background: #0b5cd1;
         }
+
+        .extra-zone {
+            margin-top: 12px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 6px;
+        }
     </style>
 </head>
 <body>
@@ -54,6 +61,14 @@
             <p id="p-price"></p>
 
             <button id="buy-btn" onclick="buyProduct()">Acheter</button>
+
+            <!-- Zone ajoutée ICI -->
+            <div class="extra-zone">
+                <input type="checkbox" id="validation-check">
+                <label for="validation-check">Confirmer que vous voulez vraiment acheter</label>
+                <br><br>
+                <button onclick="confirmBuy()">Confirmer</button>
+            </div>
         </div>
     </div>
 
@@ -75,11 +90,18 @@
 
         function buyProduct() {
             alert("Ici tu pourras intégrer la redirection ou API de Monnero.");
-
-            // Exemple futur :
-            // Monnero.checkout({ product: name, price: price });
-
             console.log("Bouton acheter cliqué !");
+        }
+
+        function confirmBuy() {
+            const checked = document.getElementById("validation-check").checked;
+
+            if (!checked) {
+                alert("Coche la case avant de confirmer.");
+                return;
+            }
+
+            alert("Achat confirmé.");
         }
     </script>
 
