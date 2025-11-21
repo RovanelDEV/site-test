@@ -2,108 +2,64 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Site Test - Produit & Achat</title>
+    <title>Test Achat</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 40px;
-            background: #f5f5f5;
+            background: #f1f1f1;
         }
         .box {
+            width: 300px;
             background: white;
             padding: 20px;
             border-radius: 8px;
-            width: 320px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        #product-display {
-            margin-top: 20px;
-            padding: 15px;
-            background: #efefef;
-            border-radius: 6px;
-            display: none;
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
         }
         button {
+            margin-top: 15px;
             padding: 10px 15px;
             background: #0d6efd;
             border: none;
-            color: white;
             border-radius: 5px;
+            color: #fff;
             cursor: pointer;
         }
         button:hover {
-            background: #0b5cd1;
-        }
-
-        .extra-zone {
-            margin-top: 12px;
-            padding: 10px;
-            background: #fff;
-            border-radius: 6px;
+            background: #0a54c8;
         }
     </style>
 </head>
 <body>
 
-    <div class="box">
-        <h2>Ajouter un produit</h2>
+<div class="box">
+    <input type="checkbox" id="agree">
+    <label for="agree">Je veux acheter ce produit</label>
 
-        <label>Nom du produit :</label><br>
-        <input type="text" id="product-name" placeholder="Ex : Casque audio"><br><br>
+    <button onclick="buy()">Acheter test</button>
+</div>
 
-        <label>Prix (€) :</label><br>
-        <input type="number" id="product-price" placeholder="Ex : 49" min="0"><br><br>
+<script>
+    function buy() {
+        const ok = document.getElementById('agree').checked;
 
-        <button onclick="addProduct()">Enregistrer le produit</button>
-
-        <div id="product-display">
-            <h3 id="p-name"></h3>
-            <p id="p-price"></p>
-
-            <button id="buy-btn" onclick="buyProduct()">Acheter</button>
-
-            <!-- Zone ajoutée ICI -->
-            <div class="extra-zone">
-                <input type="checkbox" id="validation-check">
-                <label for="validation-check">Confirmer que vous voulez vraiment acheter</label>
-                <br><br>
-                <button onclick="confirmBuy()">Confirmer</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function addProduct() {
-            const name = document.getElementById("product-name").value;
-            const price = document.getElementById("product-price").value;
-
-            if (!name || !price) {
-                alert("Merci de remplir les deux champs.");
-                return;
-            }
-
-            document.getElementById("p-name").innerText = "Produit : " + name;
-            document.getElementById("p-price").innerText = "Prix : " + price + " €";
-
-            document.getElementById("product-display").style.display = "block";
+        if (!ok) {
+            alert("Coche la case avant d'acheter.");
+            return;
         }
 
-        function buyProduct() {
-            alert("Ici tu pourras intégrer la redirection ou API de Monnero.");
-            console.log("Bouton acheter cliqué !");
-        }
+        // C’est ici que tu colles ton appel API réel
+        console.log("Achat envoyé à l’API...");
+        alert("API déclenchée (test).");
 
-        function confirmBuy() {
-            const checked = document.getElementById("validation-check").checked;
-
-            if (!checked) {
-                alert("Coche la case avant de confirmer.");
-                return;
-            }
-
-            alert("Achat confirmé.");
-        }
-    </script>
+        // Exemple d'appel futur :
+        // fetch("https://api.monnero.com/pay", {
+        //     method: "POST",
+        //     headers: { "Authorization": "Bearer TA_CLE_API" },
+        //     body: JSON.stringify({ product: "test", price: 10 })
+        // });
+    }
+</script>
 
 </body>
 </html>
